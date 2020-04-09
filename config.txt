@@ -1,0 +1,2 @@
+dispositivo=teclado
+key=Alt
