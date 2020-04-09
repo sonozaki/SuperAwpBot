@@ -13,11 +13,11 @@ Para que funcione correctamente SuperAwpBot, debes descargar la biblioteca Jnati
 Una vez instalada dicha biblioteca, es tan sencillo como ejecutar "ejecutar SuperAwpBot.bat" y seguir las instrucciones que aparecen en pantalla, 
 mientras la pantalla negra siga abierta, SuperAwpBot seguira funcionando, se puede cerrar cerrando dicha pantalla como cualquier ventana de Windows.
 
-Puedes configurar que tecla será se usará activar SuperAwpBot en el fichero "config.txt"
+Puedes configurar que tecla se usará activar SuperAwpBot en el fichero "config.txt"
 
 ## ¿Cómo usar SuperAwpBot?
 
-Una vez ejecutado SuperAwpBot debes apuntar con Awp en un pixel donde creas que debe pasar el enemigo, una vez hecho esto, pulsa la tecla del teclado/ratón que tengas indicada en tu fichero "config.txt" (Por defecto es Alt)
+Una vez ejecutado SuperAwpBot debes apuntar con Awp en un pixel donde creas que debe pasar el enemigo, una vez hecho ésto, pulsa la tecla del teclado/ratón que tengas indicada en tu fichero "config.txt" (Por defecto es Alt)
 
 En el momento que pulsas la "tecla mágica" SuperAwpBot comprobará si existe algún cambio en el centro de la pantalla (es decir, en la mira) y si existe un cambio disparará y matará a dicho enemigo.
 
