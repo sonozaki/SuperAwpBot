@@ -19,7 +19,7 @@ Una vez ejecutado SuperAwpBot debes apuntar con Awp en un pixel donde creas que 
 En el momento que pulsas la "tecla mágica" SuperAwpBot comprobará si existe algún cambio en el centro de la pantalla (es decir, en la mira) y si existe un cambio disparará y matará a dicho enemigo.
 SuperAwpBot dispara si existe un cambio en la mira, por lo que disparará si pasa tu compañero, si tiran un humo o si simplemente te mueves, por lo que debes permanecer quieto esperando que el enemigo pase por el centro de la pantalla.
 
-https://i.ibb.co/nD9Xhpx/Super-Awp-Bot.gif
+![github](https://i.ibb.co/nD9Xhpx/Super-Awp-Bot.gif)
 
 ## ¿Cómo funciona SuperAwpBot?
 
