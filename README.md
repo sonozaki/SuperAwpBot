@@ -18,7 +18,9 @@ Puedes configurar que tecla será se usará activar SuperAwpBot en el fichero "c
 ## ¿Cómo usar SuperAwpBot?
 
 Una vez ejecutado SuperAwpBot debes apuntar con Awp en un pixel donde creas que debe pasar el enemigo, una vez hecho esto, pulsa la tecla del teclado/ratón que tengas indicada en tu fichero "config.txt" (Por defecto es Alt)
+
 En el momento que pulsas la "tecla mágica" SuperAwpBot comprobará si existe algún cambio en el centro de la pantalla (es decir, en la mira) y si existe un cambio disparará y matará a dicho enemigo.
+
 SuperAwpBot dispara si existe un cambio en la mira, por lo que disparará si pasa tu compañero, si tiran un humo o si simplemente te mueves, por lo que debes permanecer quieto esperando que el enemigo pase por el centro de la pantalla.
 
 ## ¿Cómo funciona SuperAwpBot?
