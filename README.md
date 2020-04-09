@@ -25,6 +25,10 @@ SuperAwpBot dispara si existe un cambio en la mira, por lo que disparará si pas
 
 SuperAwpBot utiliza una biblioteca (JnativeHook) para capturar eventos de teclado/ratón, una vez se lanza dicho evento, SuperAwpBot realiza una captura de pantalla inicial, después realiza capturas de pantalla constantemente y las compara con la captura de pantalla inicial, si existe un cambio SuperAwpBot disparará por ti y esperará que se vuelva a lanzar el evento.
 
+## ¿Que licencia utiliza SuperAwpBot?
+
+SuperAwpBot utiliza la licencia GPLv3, siéntete libre de crear tu propio fork.
+
 ## ¡Advertencia!
 
 No uses SuperAwpBot en servidores oficiales ni en juego competitivo, arruinarás la experiencia de juego y seguramente tu cuenta de CSGO será deshabilitada, este proyecto es simplemente con fines educativos.
