@@ -25,7 +25,7 @@ SuperAwpBot dispara si existe un cambio en la mira, por lo que disparará si pas
 
 ## ¿Cómo funciona SuperAwpBot?
 
-SuperAwpBot utiliza una biblioteca (JnativeHook) para capturar eventos de teclado/ratón, una vez se lanza dicho evento, SuperAwpBot realiza una captura de pantalla inicial, después realiza capturas de pantalla constantemente y las compara con la captura de pantalla inicial, si existe un cambio SuperAwpBot disparará por ti y esperará que se vuelva a lanzar el evento.
+SuperAwpBot utiliza una biblioteca (JnativeHook) para capturar eventos de teclado/ratón, una vez se lanza dicho evento, SuperAwpBot realiza una captura de pantalla inicial, después realiza capturas de pantalla constantemente y las compara con la captura de pantalla inicial, si existe un cambio SuperAwpBot disparará por ti y esperará a que se vuelva a lanzar el evento.
 
 ## ¿Que licencia utiliza SuperAwpBot?
 
