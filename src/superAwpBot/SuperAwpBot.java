@@ -146,6 +146,7 @@ public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
 		System.out.println("************************************************************");
 	}
 
+	// Metodo que es llamado al lanzarse el evento
 	public static void superAwpBot() throws AWTException {
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -175,6 +176,7 @@ public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
 		}
 	}
 
+	// Metodo que compara dos imagenes
 	public static boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
 
 		int noIgual = 0;
