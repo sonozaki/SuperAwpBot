@@ -23,6 +23,8 @@ En el momento que pulsas la "tecla mágica" SuperAwpBot comprobará si existe al
 
 SuperAwpBot dispara si existe un cambio en la mira, por lo que disparará si pasa tu compañero, si tiran un humo o si simplemente te mueves, por lo que debes permanecer quieto esperando que el enemigo pase por el centro de la pantalla.
 
+ACTUALIZACIÓN: AHORA PUEDES MOVER LA MIRA PARA CAMBIAR EL PICK SIN QUE SuperAwpBot DISPARE, PERO RECUERDA QUE DISPARARÁ SI TE MUEVES CON EL TECLADO.
+
 ## ¿Cómo funciona SuperAwpBot?
 
 SuperAwpBot utiliza una biblioteca (JnativeHook) para capturar eventos de teclado/ratón, una vez se lanza dicho evento, SuperAwpBot realiza una captura de pantalla inicial, después realiza capturas de pantalla constantemente y las compara con la captura de pantalla inicial, si existe un cambio SuperAwpBot disparará por ti y esperará a que se vuelva a lanzar el evento.

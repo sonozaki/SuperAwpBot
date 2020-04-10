@@ -1,6 +1,6 @@
 /*
 
-Copyright (C) <2020>  <Francisco Domínguez Lerma>
+Copyright (C) <2020>  <Francisco DomÃ­nguez Lerma>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 */
-
 package superAwpBot;
 
 import java.awt.AWTException;
@@ -40,11 +39,20 @@ import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 import org.jnativehook.mouse.NativeMouseListener;
 import org.jnativehook.mouse.NativeMouseEvent;
+import org.jnativehook.mouse.NativeMouseInputListener;
 
-public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
+public class SuperAwpBot implements NativeMouseListener, NativeKeyListener, NativeMouseInputListener, Runnable {
 	public static String dispositivo = "";
 	public static int raton = -1;
 	public static String teclado = "";
+	public static boolean moviendo = false;
+	public static Thread hilo;
+	public static Dimension screenSize;
+	public static Robot robot;
+	public static double altura;
+	public static double ancho;
+	public static BufferedImage bufferedImage;
+	public static boolean evento = false;
 
 	public static void main(String[] args) throws ParseException {
 		Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
@@ -63,8 +71,7 @@ public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
 		InputStream is = null;
 		System.out.println("************************************************************");
 		System.out.println("***** Bienvenido a SuperAwpBot *****");
-		System.out.println(
-				"Version: 1.1 <== Ahora puedes bindear la tecla que quieras tanto en el raton como en el teclado\n");
+		System.out.println("Version: 1.2 <== Ahora puedes mover la mira para cambiar el pick\n");
 		System.out.println("");
 		System.out.println("************************************************************");
 		System.out.println("");
@@ -117,6 +124,10 @@ public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
 
 		}
 
+		GlobalScreen.addNativeMouseMotionListener(new SuperAwpBot());
+		hilo = new Thread(new SuperAwpBot());
+		hilo.start();
+
 		if (dispositivo.equalsIgnoreCase("raton")) {
 			GlobalScreen.addNativeMouseListener(new SuperAwpBot());
 		} else {
@@ -140,40 +151,10 @@ public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
 		System.out.println(
 				"ADVERTENCIA 1: SuperAwpBot detecta CUALQUIER CAMBIO QUE PASE POR LA MIRA, si pasa un aliado de tu equipo por tu mira, disparara, al igual que con cualquier otra cosa que afecte a tu mira, como una flash, humo etc... SuperAwpBot es muy sensible, usalo con cuidado.\n");
 		System.out.println(
-				"ADVERTENCIA 2: Mientras SuperAwpBot esta activo (esperando un cambio en la mira) tampoco puedes moverte, ya que lo detectara como un cambio, debes estar completamente quieto.\n");
+				"ADVERTENCIA 2: Mientras SuperAwpBot esta activo (esperando un cambio en la mira) tampoco puedes moverte con el teclado, ya que lo detectara como un cambio, solo puedes mover la mira.\n");
 		System.out.println(
 				"ADVERTENCIA 3: SuperAwpBot puede ser detectado por CSGO, por lo que te pueden dar un buen VAC, no uses tu cuenta MAIN.\n");
 		System.out.println("************************************************************");
-	}
-
-	// Metodo que es llamado al lanzarse el evento
-	public static void superAwpBot() throws AWTException {
-
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		Robot robot = new Robot();
-
-		double altura = screenSize.getHeight() / 2;
-		double ancho = screenSize.getWidth() / 2;
-
-		Rectangle area = new Rectangle();
-		area.setBounds((int) ancho - 1, (int) altura, 2, 2);
-		BufferedImage bufferedImage = robot.createScreenCapture(area);
-
-		boolean noDisparar = false;
-
-		while (!noDisparar) {
-
-			Rectangle area2 = new Rectangle();
-			area2.setBounds((int) ancho - 1, (int) altura, 2, 2);
-			BufferedImage bufferedImage2 = robot.createScreenCapture(area2);
-
-			if (!bufferedImagesEqual(bufferedImage, bufferedImage2)) {
-				robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-				robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-				System.out.println("Disparando...\n");
-				noDisparar = true;
-			}
-		}
 	}
 
 	// Metodo que compara dos imagenes
@@ -204,18 +185,34 @@ public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
 		}
 	}
 
+	public void establecerImagenInicial() {
+		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		robot = null;
+		try {
+			robot = new Robot();
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		altura = screenSize.getHeight() / 2;
+		ancho = screenSize.getWidth() / 2;
+
+		Rectangle area = new Rectangle();
+		area.setBounds((int) ancho - 1, (int) altura, 2, 2);
+		bufferedImage = robot.createScreenCapture(area);
+
+	}
+
 	// Evento de raton
 	@Override
 	public void nativeMouseReleased(NativeMouseEvent arg0) {
 		if (dispositivo.equalsIgnoreCase("raton")) {
 			if (arg0.getButton() == raton) {
 				System.out.println("Escuchando...");
-				try {
-					superAwpBot();
-				} catch (AWTException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
+				evento = true;
+
 			}
 		}
 	}
@@ -228,15 +225,41 @@ public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
 
 			if (tecla.equals(teclado)) {
 				System.out.println("Escuchando...");
-				try {
-					superAwpBot();
-				} catch (AWTException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
+				evento = true;
 
 			}
 		}
+	}
+	
+	@Override
+	public void run() {
+		
+		while (true) {
+			establecerImagenInicial();
+					Rectangle area2 = new Rectangle();
+					area2.setBounds((int) ancho - 1, (int) altura, 2, 2);
+					BufferedImage bufferedImage2 = robot.createScreenCapture(area2);
+
+					if (!bufferedImagesEqual(bufferedImage, bufferedImage2) && !moviendo && evento) {
+						robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+						robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+						System.out.println("Disparando...\n");
+						evento=false;
+					}
+
+					if (moviendo) {
+						moviendo = false;
+						establecerImagenInicial();
+					}
+
+				}
+
+			}
+	
+	@Override
+	public void nativeMouseMoved(NativeMouseEvent arg0) {
+		moviendo = true;
 	}
 
 	@Override
@@ -249,10 +272,19 @@ public class SuperAwpBot implements NativeMouseListener, NativeKeyListener {
 
 	@Override
 	public void nativeKeyPressed(NativeKeyEvent arg0) {
+		
 	}
 
 	@Override
 	public void nativeKeyTyped(NativeKeyEvent arg0) {
 	}
 
-}
+	@Override
+	public void nativeMouseDragged(NativeMouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	}
+
+
