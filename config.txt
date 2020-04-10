@@ -1,5 +1,5 @@
 #Puedes usar botones del ratón, para ello en dispositivo debes indicar sin comillas "raton"
-#Los botones 1 y 2 hacen referencia al boton izquierdo y derecho del ratón, por lo que puedes indicar 3, 4 etc... en "key" para establecer botones adicionales de tu ratón
+#Los botones 1, 2 y 3 hacen referencia al boton izquierdo, boton derecho del ratón y la rueda, por lo que puedes indicar 4, 5, etc... en "key" para establecer botones adicionales de tu ratón
 
 dispositivo=teclado
 key=Alt
