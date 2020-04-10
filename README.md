@@ -23,7 +23,8 @@ En el momento que pulsas la "tecla mágica" SuperAwpBot comprobará si existe al
 
 SuperAwpBot dispara si existe un cambio en la mira, por lo que disparará si pasa tu compañero, si tiran un humo o si simplemente te mueves, por lo que debes permanecer quieto esperando que el enemigo pase por el centro de la pantalla.
 
-ACTUALIZACIÓN: AHORA PUEDES MOVER LA MIRA PARA CAMBIAR EL PICK SIN QUE SuperAwpBot DISPARE, PERO RECUERDA QUE DISPARARÁ SI TE MUEVES CON EL TECLADO.
+ACTUALIZACIÓN: Ahora puedes mover la mira para cambiar el pick sin que SuperAwpBot dispare, pero recuerda que disparará si te mueves con el teclado.
+
 
 ## ¿Cómo funciona SuperAwpBot?
 
